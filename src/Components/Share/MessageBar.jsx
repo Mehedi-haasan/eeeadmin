@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
-const socket = io('http://localhost:8050');
+// const socket = io('http://localhost:8050');
 
 const MessageBar = ({userId}) => {
     const [show, setShow] = useState(false)
@@ -10,44 +10,44 @@ const MessageBar = ({userId}) => {
     const [senderId, setSenderId] = useState('2')
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        socket.emit('login', senderId);
+    // useEffect(() => {
+    //     socket.emit('login', senderId);
 
-        socket.on('receive-message', (data) => {
-            setAllMessage(prevMessages => [...prevMessages, data]);
-            setShow(true)
-        });
+    //     socket.on('receive-message', (data) => {
+    //         setAllMessage(prevMessages => [...prevMessages, data]);
+    //         setShow(true)
+    //     });
 
-        return () => {
-            socket.emit('logout');
-            socket.off('receive-message');
-        };
-    }, [senderId]);
+    //     return () => {
+    //         socket.emit('logout');
+    //         socket.off('receive-message');
+    //     };
+    // }, [senderId]);
 
-    const fetchMessage = async () => {
-        const response = await fetch(`http://localhost:8050/api/get/message/${recieverId}`);
-        const data = await response.json();
-        setAllMessage(data.items)
-    }
+    // const fetchMessage = async () => {
+    //     const response = await fetch(`http://localhost:8050/api/get/message/${recieverId}`);
+    //     const data = await response.json();
+    //     setAllMessage(data.items)
+    // }
 
-    useEffect(() => {
-        // fetchMessage()
-    }, [])
+    // useEffect(() => {
+    //     // fetchMessage()
+    // }, [])
 
 
 
     const onSubmit = (event) => {
-        event.preventDefault();
-        setIsLoading(true);
+        // event.preventDefault();
+        // setIsLoading(true);
 
-        setAllMessage(prevMessages => [...prevMessages, { senderId: senderId, recieverId: recieverId, message: message }]);
-        socket.timeout(5000).emit('create-message', { senderId, recieverId, message }, (response) => {
-            setIsLoading(false);
-            console.log(response);
+        // setAllMessage(prevMessages => [...prevMessages, { senderId: senderId, recieverId: recieverId, message: message }]);
+        // socket.timeout(5000).emit('create-message', { senderId, recieverId, message }, (response) => {
+        //     setIsLoading(false);
+        //     console.log(response);
 
-        });
-        setMessage('')
-        setIsLoading(false)
+        // });
+        // setMessage('')
+        // setIsLoading(false)
     }
     return (
         <div>
