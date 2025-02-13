@@ -1,2 +1,2 @@
-const BaseUrl = "https://eeeserver.vercel.app/";
+const BaseUrl = "https://eeeserver.vercel.app";
 export default BaseUrl
