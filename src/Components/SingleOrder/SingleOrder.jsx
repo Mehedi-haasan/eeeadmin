@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Search from '../../icons/Search';
 import Invoice from '../Invoice/Invoice';
+import BaseUrl from '../../Constant';
 
 const SingleOrder = () => {
     const [data, setData] = useState([]);
     const [invoice_id, setInvoiceId] = useState('')
 
     const SingleOrder = async () => {
-        const response = await fetch(`http://localhost:8050/api/get/order/${invoice_id}`);
+        const response = await fetch(`${BaseUrl}/api/get/order/${invoice_id}`);
         const data = await response.json();
         setData(data?.items)
     }

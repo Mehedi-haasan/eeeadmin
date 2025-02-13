@@ -1,6 +1,9 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import InputComponent from '../Input/InputComponent';
+import BaseUrl from '../../Constant';
+
+
 const Registration = () => {
   const [values, setValues] = useState({})
   const goToHome = useNavigate();
@@ -8,7 +11,7 @@ const Registration = () => {
     e.preventDefault();
     console.log(values)
 
-    const response = await fetch(`http://localhost:8050/api/auth/signup`, {
+    const response = await fetch(`${BaseUrl}/api/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import BaseUrl from '../../Constant';
 
 const SmallSize = ({ onChange }) => {
     const [category, setCategory] = useState(false)
@@ -10,7 +11,7 @@ const SmallSize = ({ onChange }) => {
 
 
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8050/api/get/category/by/productValue`);
+        const response = await fetch(`${BaseUrl}/api/get/category/by/productValue`);
         const data = await response.json();
         setData(data.items)
     }
@@ -31,7 +32,7 @@ const SmallSize = ({ onChange }) => {
                 <li className="py-1 border-b">
                     <div className=''>
                         <div className="flex justify-between w-full"><NavLink className={`rounded px-1 py-1 `}>Categories</NavLink><Icon onClick={() => { setCategory(!category) }} icon="ep:arrow-down" width="18px" className={`transition-transform mt-2 cursor-pointer right-0 duration-300 ${category ? "rotate-180" : "rotate-0"}`} /></div>
-                        <div className={`text-sm text-black p-1.5 bg-white text-black rounded ${category ? "block" : "hidden"}`}>
+                        <div className={`text-sm text-black p-1.5 bg-white rounded ${category ? "block" : "hidden"}`}>
                             {data.map((item) => {
                                 return <NavLink onClick={()=>{onChange(false)}} to={`/category/${item.id}/${item.name}`} className="flex py-1  rounded-lg">{item.name}</NavLink>
                             })}

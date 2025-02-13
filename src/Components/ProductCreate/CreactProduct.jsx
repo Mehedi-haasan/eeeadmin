@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import InputComponent from '../Input/InputComponent'
 import Button from '../Input/Button';
 import SelectionComponent from '../Input/SelectionComponent'
+import BaseUrl from '../../Constant';
 
 
 const CreactProduct = () => {
@@ -27,7 +28,7 @@ const CreactProduct = () => {
         values.description = value;
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:8050/api/create/product', {
+            const response = await fetch(`${BaseUrl}/api/create/product`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,
@@ -58,7 +59,7 @@ const CreactProduct = () => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch('http://localhost:8050/api/upload/image', {
+            const response = await fetch(`${BaseUrl}/api/upload/image`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,
@@ -77,7 +78,7 @@ const CreactProduct = () => {
 
     useEffect(() => {
         const GetCategory = async () => {
-            const response = await fetch(`http://localhost:8050/api/get/category`);
+            const response = await fetch(`${BaseUrl}/api/get/category`);
             const data = await response.json();
             setCategory(data?.items || [])
         }

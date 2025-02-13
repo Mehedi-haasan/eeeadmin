@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ProductCard from './ProductCard';
 import Search from '../../icons/Search';
+import BaseUrl from '../../Constant';
 
 const Practice = () => {
 
@@ -12,7 +13,7 @@ const Practice = () => {
 
     const getOrder = async () => {
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/get/product/templete`, {
+        const response = await fetch(`${BaseUrl}/api/get/product/templete`, {
             method: 'GET',
             headers: {
                 "authorization": token,
@@ -33,7 +34,7 @@ const Practice = () => {
         const id = e.target.value
         const token = localStorage.getItem('token')
         if (id) {
-            const response = await fetch(`http://localhost:8050/api/product/single/order/${id}`, {
+            const response = await fetch(`${BaseUrl}/api/product/single/order/${id}`, {
                 method: 'GET',
                 headers: {
                     'authorization': token,

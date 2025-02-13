@@ -1,7 +1,8 @@
 import { useState } from "react"
 import Button from "../Input/Button"
 import InputComponent from "../Input/InputComponent"
-import Modal from "../Input/Modal"
+import Modal from "../Input/Modal";
+import BaseUrl from '../../Constant'
 
 const Category = () => {
 
@@ -14,7 +15,7 @@ const Category = () => {
         values.image_url = image_url;
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:8050/api/create/category', {
+            const response = await fetch(`${BaseUrl}/api/create/category`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,
@@ -46,7 +47,7 @@ const Category = () => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch('http://localhost:8050/api/upload/image', {
+            const response = await fetch(`${BaseUrl}/api/upload/image`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import InputComponent from '../Input/InputComponent';
 import Button from '../Input/Button';
+import BaseUrl from '../../Constant'
 
 const Company = () => {
 
@@ -8,7 +9,7 @@ const Company = () => {
 
     const PostInfo = async () => {
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/create/company/info`, {
+        const response = await fetch(`${BaseUrl}/api/create/company/info`, {
             method: 'POST',
             headers: {
                 'authorization': token,
@@ -21,7 +22,7 @@ const Company = () => {
 
     const UpdateInfo = async () => {
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/update/company/info`, {
+        const response = await fetch(`${BaseUrl}/api/update/company/info`, {
             method: 'POST',
             headers: {
                 'authorization': token,
@@ -36,7 +37,7 @@ const Company = () => {
 
     const GetCompanyInfo = async () => {
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/get/company/info`, {
+        const response = await fetch(`${BaseUrl}/api/get/company/info`, {
             method: 'GET',
             headers: {
                 'authorization': token,

@@ -3,6 +3,7 @@ import Remove from '../../icons/Remove';
 import Edit from '../../icons/Edit';
 import OrderCard from './OrderCard';
 import Search from '../../icons/Search';
+import BaseUrl from '../../Constant';
 
 const Order = () => {
     const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ const Order = () => {
 
     const getOrder = async () => {
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/get/order`, {
+        const response = await fetch(`${BaseUrl}/api/get/order`, {
             method: 'GET',
             headers: {
                 "authorization": token,
@@ -31,7 +32,7 @@ const Order = () => {
         const id = e.target.value
         const token = localStorage.getItem('token')
         if (id) {
-            const response = await fetch(`http://localhost:8050/api/product/single/order/${id}`, {
+            const response = await fetch(`${BaseUrl}/api/product/single/order/${id}`, {
                 method: 'GET',
                 headers: {
                     'authorization': token,

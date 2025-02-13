@@ -8,6 +8,7 @@ import Modal from '../Input/Modal';
 import Loading from '../../icons/Loading';
 import InputComponent from '../Input/InputComponent';
 import Button from '../Input/Button';
+import BaseUrl from '../../Constant';
 
 const CategoryCard = ({ id, name, image }) => {
     const [show, setShow] = useState(false)
@@ -23,7 +24,7 @@ const CategoryCard = ({ id, name, image }) => {
     const handleDelete = async() => {
         setLoading(true); 
         const token = localStorage.getItem('token')
-        const response = await fetch(`http://localhost:8050/api/delete/category/by/${id}`,{
+        const response = await fetch(`${BaseUrl}/api/delete/category/by/${id}`,{
             method: 'DELETE',
             headers: {
                 'authorization': token,
@@ -45,7 +46,7 @@ const CategoryCard = ({ id, name, image }) => {
         const token = localStorage.getItem('token');
         console.log("data", value);
         try {
-            const response = await fetch('http://localhost:8050/api/update/category', {
+            const response = await fetch(`${BaseUrl}/api/update/category`, {
                 method: 'PATCH',
                 headers: {
                     'authorization': token,
@@ -78,7 +79,7 @@ const CategoryCard = ({ id, name, image }) => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch('http://localhost:8050/api/upload/image', {
+            const response = await fetch(`${BaseUrl}/api/upload/image`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,

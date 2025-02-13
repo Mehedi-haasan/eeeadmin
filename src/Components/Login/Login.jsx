@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import InputComponent from '../Input/InputComponent'
+import InputComponent from '../Input/InputComponent';
+import BaseUrl from '../../Constant';
 
 const Login = ({auth}) => {
 
@@ -9,7 +10,7 @@ const Login = ({auth}) => {
   })
 
   const handleSubmit = async (e) => {
-    const response = await fetch(`http://localhost:8050/api/auth/signin`, {
+    const response = await fetch(`${BaseUrl}/api/auth/signin`, {
       method: "POST",
       headers: {
         'Content-type': 'application/json; charset=UTF-8',

@@ -7,7 +7,8 @@ import MiniButton from '../Input/MiniButton';
 import PaymentTotal from './PaymentTotal';
 import Search from '../../icons/Search';
 import SellCard from '../Sell/SellCard';
-import SelectionComponent from '../Input/SelectionComponent'
+import SelectionComponent from '../Input/SelectionComponent';
+import BaseUrl from '../../Constant';
 
 const Invoice = ({ isOrder = true }) => {
 
@@ -41,7 +42,7 @@ const Invoice = ({ isOrder = true }) => {
         const name = e.target.value
         const token = localStorage.getItem('token')
         if (name) {
-            const response = await fetch(`http://localhost:8050/api/get/product/search/${name}`, {
+            const response = await fetch(`${BaseUrl}/api/get/product/search/${name}`, {
                 method: 'GET',
                 headers: {
                     'authorization': token,
@@ -93,7 +94,7 @@ const Invoice = ({ isOrder = true }) => {
         ))
         console.log(orderData);
         try {
-            const response = await fetch('http://localhost:8050/api/post/order', {
+            const response = await fetch(`${BaseUrl}/api/post/order`, {
                 method: 'POST',
                 headers: {
                     'authorization': token,
@@ -123,7 +124,7 @@ const Invoice = ({ isOrder = true }) => {
     useEffect(() => {
 
         const fetchState = async () => {
-            const response = await fetch('http://localhost:8050/api/get/state/with/user');
+            const response = await fetch(`${BaseUrl}/api/get/state/with/user`);
             const data = await response.json();
             setState(data?.items || []);
             setUser(data?.items[0].users || [])

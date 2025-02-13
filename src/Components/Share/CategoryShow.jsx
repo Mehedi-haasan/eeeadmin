@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import BaseUrl from "../../Constant";
+
 
 const CategoryShow = ({onChange}) => {
     const [data, setData] = useState([])
     const [selected, setSelected] = useState("")
 
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8050/api/get/category/by/productValue`);
+        const response = await fetch(`${BaseUrl}/api/get/category/by/productValue`);
         const data = await response.json();
         setData(data.items)
     }
